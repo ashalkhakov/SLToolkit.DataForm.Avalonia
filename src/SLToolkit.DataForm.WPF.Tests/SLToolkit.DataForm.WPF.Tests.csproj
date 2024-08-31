@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.props" Condition="Exists('..\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98133438-7794-4B8E-9115-6C2C8FFBD159}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SLToolkit.DataForm.WPF.Tests</RootNamespace>
+    <AssemblyName>SLToolkit.DataForm.WPF.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MiniTestHarness\AssemblyInitialize.cs" />
+    <Compile Include="Common\DataClassWithEditableAttribute.cs" />
+    <Compile Include="Common\DataClassWithMissingDescriptions.cs" />
+    <Compile Include="Common\DataClassWithReadOnlyAttribute.cs" />
+    <Compile Include="Common\DataClassWithReadOnlyProperty.cs" />
+    <Compile Include="Common\DataClassWithShortNames.cs" />
+    <Compile Include="Common\DataClassWithUneditableType.cs" />
+    <Compile Include="Common\ListOperations.cs" />
+    <Compile Include="Common\ReadOnlyDataClass.cs" />
+    <Compile Include="DataForm\DataTemplates\HeaderTemplate.xaml.cs">
+      <DependentUpon>HeaderTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\DataTemplates\TemplateFieldDisplayTemplate.xaml.cs">
+      <DependentUpon>TemplateFieldDisplayTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\DataTemplates\TemplateFieldEditTemplate.xaml.cs">
+      <DependentUpon>TemplateFieldEditTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\DataTemplates\TemplateFieldInsertTemplate.xaml.cs">
+      <DependentUpon>TemplateFieldInsertTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_Autogeneration.xaml.cs">
+      <DependentUpon>DataFormApp_Autogeneration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_AutoGenerationTwoDataForms.xaml.cs">
+      <DependentUpon>DataFormApp_AutoGenerationTwoDataForms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_DirectContent.xaml.cs">
+      <DependentUpon>DataFormApp_DirectContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_Fields.xaml.cs">
+      <DependentUpon>DataFormApp_Fields.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_FieldsDescriptionViewer.xaml.cs">
+      <DependentUpon>DataFormApp_FieldsDescriptionViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_FieldsGroupWithNonGrouped.xaml.cs">
+      <DependentUpon>DataFormApp_FieldsGroupWithNonGrouped.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_FieldsInverseLabelPlacement.xaml.cs">
+      <DependentUpon>DataFormApp_FieldsInverseLabelPlacement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_FieldsWithDifferentBinding.xaml.cs">
+      <DependentUpon>DataFormApp_FieldsWithDifferentBinding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_FieldsWithInitialAutoEdit.xaml.cs">
+      <DependentUpon>DataFormApp_FieldsWithInitialAutoEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_FieldsWithLayoutChanges.xaml.cs">
+      <DependentUpon>DataFormApp_FieldsWithLayoutChanges.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_FieldsWithPropertyPath.xaml.cs">
+      <DependentUpon>DataFormApp_FieldsWithPropertyPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_FieldsWithStyles.xaml.cs">
+      <DependentUpon>DataFormApp_FieldsWithStyles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_FieldsWithStylesWithTemplates.xaml.cs">
+      <DependentUpon>DataFormApp_FieldsWithStylesWithTemplates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_FieldsWithUneditableType.xaml.cs">
+      <DependentUpon>DataFormApp_FieldsWithUneditableType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_LayoutProperties.xaml.cs">
+      <DependentUpon>DataFormApp_LayoutProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_NoStrongReference.xaml.cs">
+      <DependentUpon>DataFormApp_NoStrongReference.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_ReadOnlyProperty1.xaml.cs">
+      <DependentUpon>DataFormApp_ReadOnlyProperty1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_ReadOnlyProperty2.xaml.cs">
+      <DependentUpon>DataFormApp_ReadOnlyProperty2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_ReadOnlyProperty3.xaml.cs">
+      <DependentUpon>DataFormApp_ReadOnlyProperty3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_Standard.xaml.cs">
+      <DependentUpon>DataFormApp_Standard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_Templates.xaml.cs">
+      <DependentUpon>DataFormApp_Templates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_TemplatesWithBinding.xaml.cs">
+      <DependentUpon>DataFormApp_TemplatesWithBinding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_TemplatesWithElementNameBinding.xaml.cs">
+      <DependentUpon>DataFormApp_TemplatesWithElementNameBinding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataForm\TestApps\DataFormApp_TemplatesWithTabIndex.xaml.cs">
+      <DependentUpon>DataFormApp_TemplatesWithTabIndex.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BasicDataClass.cs" />
+    <Compile Include="Common\DataClass.cs" />
+    <Compile Include="Common\DataClassAllTwoWayBindings.cs" />
+    <Compile Include="Common\DataClassList.cs" />
+    <Compile Include="Common\DataClassWithEnum.cs" />
+    <Compile Include="Common\DataClassWithOrder.cs" />
+    <Compile Include="Common\DataClassWithValidation.cs" />
+    <Compile Include="Common\DataClassWithValidationValidator.cs" />
+    <Compile Include="Common\DataEnum.cs" />
+    <Compile Include="Common\EnumerableCollection.cs" />
+    <Compile Include="Common\IntCollection.cs" />
+    <Compile Include="Common\TestClass.cs" />
+    <Compile Include="DataField\DataFieldTests.cs" />
+    <Compile Include="DataForm\DataFormTests_Autogeneration.cs" />
+    <Compile Include="DataForm\DataFormTests_Base.cs" />
+    <Compile Include="DataForm\DataFormTests_DependencyProperties.cs" />
+    <Compile Include="DataForm\DataFormTests_Editing.cs" />
+    <Compile Include="DataForm\DataFormTests_Events.cs" />
+    <Compile Include="DataForm\DataFormTests_InsertingDeleting.cs" />
+    <Compile Include="DataForm\DataFormTests_Layout.cs" />
+    <Compile Include="DataForm\DataFormTests_Miscellaneous.cs" />
+    <Compile Include="DataForm\DataFormTests_Navigation.cs" />
+    <Compile Include="DataForm\DataFormTests_TemplateDrivenUI.cs" />
+    <Compile Include="DataForm\DataFormTests_TemplateParts.cs" />
+    <Compile Include="DataForm\DataFormTests_Validation.cs" />
+    <Compile Include="MiniTestHarness\AsynchronousAttribute.cs" />
+    <Compile Include="MiniTestHarness\DependencyObjectExtensions.cs" />
+    <Compile Include="MiniTestHarness\GlobalExceptionHandler.cs" />
+    <Compile Include="MiniTestHarness\ITestPage.cs" />
+    <Compile Include="MiniTestHarness\PresentationTest.cs" />
+    <Compile Include="MiniTestHarness\TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MiniTestHarness\TestPanelManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MiniTestHarness\WpfTestMethodAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SLToolkit.DataForm.WPF\SLToolkit.DataForm.WPF.csproj">
+      <Project>{b1f0f8dd-e13c-40b9-8cfc-75439a9bc240}</Project>
+      <Name>SLToolkit.DataForm.WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MiniTestHarness\TestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Resource Include="DataForm\DataTemplates\HeaderTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="DataForm\DataTemplates\TemplateFieldDisplayTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="DataForm\DataTemplates\TemplateFieldEditTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="DataForm\DataTemplates\TemplateFieldInsertTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Page Include="DataForm\TestApps\DataFormApp_Autogeneration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_AutoGenerationTwoDataForms.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_DirectContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_Fields.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_FieldsDescriptionViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_FieldsGroupWithNonGrouped.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_FieldsInverseLabelPlacement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_FieldsWithDifferentBinding.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_FieldsWithInitialAutoEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_FieldsWithLayoutChanges.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_FieldsWithPropertyPath.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_FieldsWithStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_FieldsWithStylesWithTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_FieldsWithUneditableType.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_LayoutProperties.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_NoStrongReference.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_ReadOnlyProperty1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_ReadOnlyProperty2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_ReadOnlyProperty3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_Standard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_TemplatesWithBinding.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_TemplatesWithElementNameBinding.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataForm\TestApps\DataFormApp_TemplatesWithTabIndex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets'))" />
+  </Target>
+  <Import Project="..\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets')" />
+</Project>

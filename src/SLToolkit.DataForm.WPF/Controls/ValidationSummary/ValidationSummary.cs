@@ -23,8 +23,6 @@ namespace SLToolkit.DataForm.WPF.Controls
         private ValidationItemCollection _errors;
         private ListBox _errorsListBox;
         private ContentControl _headerContentControl;
-        private bool _initialized;
-        private FrameworkElement _registeredParent;
         private Dictionary<string, ValidationSummaryItem> _validationSummaryItemDictionary;
         public static readonly DependencyProperty ShowErrorsInSummaryProperty = DependencyProperty.RegisterAttached("ShowErrorsInSummary", typeof(bool), typeof(ValidationSummary), new PropertyMetadata(true, new PropertyChangedCallback(ValidationSummary.OnShowErrorsInSummaryPropertyChanged)));
         public static readonly DependencyProperty ErrorStyleProperty = DependencyProperty.Register("ErrorStyle", typeof(Style), typeof(ValidationSummary), null);
@@ -47,8 +45,6 @@ namespace SLToolkit.DataForm.WPF.Controls
             this._validationSummaryItemDictionary = new Dictionary<string, ValidationSummaryItem>();
             this._displayedErrors = new ValidationItemCollection();
             this._errors.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(this.Errors_CollectionChanged);
-            base.Loaded += new RoutedEventHandler(this.ValidationSummary_Loaded);
-            base.Unloaded += new RoutedEventHandler(this.ValidationSummary_Unloaded);
             base.IsEnabledChanged += new DependencyPropertyChangedEventHandler(this.ValidationSummary_IsEnabledChanged);
             if (DesignerProperties.GetIsInDesignMode(this))
             {
@@ -310,21 +306,13 @@ namespace SLToolkit.DataForm.WPF.Controls
             var oldValue = e.OldValue as FrameworkElement;
             var summary = d as ValidationSummary;
             var handler = new EventHandler<ValidationErrorEventArgs>(summary.Target_BindingValidationError);
-            if (summary._registeredParent != null)
-            {
-                //summary._registeredParent.BindingValidationError -= handler;
-                summary._registeredParent.RemoveHandler(Validation.ErrorEvent, handler);
-                summary._registeredParent = null;
-            }
             if (oldValue != null)
             {
-                //oldValue.BindingValidationError -= handler;
                 oldValue.RemoveHandler(Validation.ErrorEvent, handler);
             }
             var newValue = e.NewValue as FrameworkElement;
             if (newValue != null)
             {
-                //newValue.BindingValidationError += handler;
                 newValue.AddHandler(Validation.ErrorEvent, handler);
             }
             summary._errors.ClearErrors(ValidationSummaryItemType.PropertyError);
@@ -428,6 +416,7 @@ namespace SLToolkit.DataForm.WPF.Controls
                     name = originalSource.GetHashCode().ToString(CultureInfo.InvariantCulture);
                 }
                 var key = name + message;
+
                 if (this._validationSummaryItemDictionary.ContainsKey(key))
                 {
                     var item = this._validationSummaryItemDictionary[key];
@@ -554,34 +543,6 @@ namespace SLToolkit.DataForm.WPF.Controls
             this.UpdateCommonState(true);
         }
 
-        private void ValidationSummary_Loaded(object sender, RoutedEventArgs e)
-        {
-            if ((this.Target == null) && (this._registeredParent == null))
-            {
-                this._registeredParent = VisualTreeHelper.GetParent(this) as FrameworkElement;
-                var handler = new EventHandler<ValidationErrorEventArgs>(this.Target_BindingValidationError);
-                if (this._registeredParent != null)
-                {
-                    //this._registeredParent.BindingValidationError += new EventHandler<ValidationErrorEventArgs>(this.Target_BindingValidationError);                    
-                    this._registeredParent.AddHandler(Validation.ErrorEvent, handler);
-                }
-            }
-            base.Loaded -= new RoutedEventHandler(this.ValidationSummary_Loaded);
-            this._initialized = true;
-        }
-
-        private void ValidationSummary_Unloaded(object sender, RoutedEventArgs e)
-        {
-            var handler = new EventHandler<ValidationErrorEventArgs>(this.Target_BindingValidationError);
-            if (this._registeredParent != null)
-            {               
-                //this._registeredParent.BindingValidationError -= new EventHandler<ValidationErrorEventArgs>(this.Target_BindingValidationError);
-                this._registeredParent.RemoveHandler(Validation.ErrorEvent, handler);
-            }
-            base.Unloaded -= new RoutedEventHandler(this.ValidationSummary_Unloaded);
-            this._initialized = false;
-        }
-
         private void ValidationSummaryItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "ItemType")
@@ -669,7 +630,7 @@ namespace SLToolkit.DataForm.WPF.Controls
             new System.Collections.ObjectModel.ReadOnlyObservableCollection<ValidationSummaryItem>(this._displayedErrors);
 
         internal new bool Initialized =>
-            this._initialized;
+            true;
 
         internal ListBox ErrorsListBoxInternal =>
             this._errorsListBox;

@@ -7,10 +7,21 @@ using System.Threading.Tasks;
 
 namespace DataFormDemo
 {
-    public class TestModel : IDataErrorInfo
+    public class TestModel : INotifyPropertyChanged, IDataErrorInfo
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _name;
+        public string Name {
+            get => _name;
+            set => this.SetValue(ref _name, value, nameof(Name));
+        }
+
+        private string _address;
+        public string Address {
+            get => _address;
+            set => this.SetValue(ref _address, value, nameof(Address));
+        }
 
         public string this[string columnName]
         {
@@ -30,6 +41,23 @@ namespace DataFormDemo
                 }
 
                 return result;
+            }
+        }
+
+
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            var handler = this.PropertyChanged;
+            if (handler != null)
+                handler(this, e);
+        }
+
+        private void SetValue<T>(ref T field, T value, string propertyName)
+        {
+            if (!EqualityComparer<T>.Default.Equals(field, value))
+            {
+                field = value;
+                this.OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
             }
         }
 

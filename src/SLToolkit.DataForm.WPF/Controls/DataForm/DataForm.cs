@@ -2690,7 +2690,10 @@ namespace SLToolkit.DataForm.WPF.Controls
                 {
                     this.PrepareContent(this.Content);
                 }
-                this._fields = this._fieldsDictionary[contentRootElement];
+                if (this._fieldsDictionary.ContainsKey(contentRootElement))
+                {
+                    this._fields = this._fieldsDictionary[contentRootElement];
+                }
             }
         }
 
@@ -3258,7 +3261,7 @@ namespace SLToolkit.DataForm.WPF.Controls
             if (collectionView == null)
             {
                 // If we still do not have a collection view, default to a PagedCollectionView.
-                collectionView = new CollectionView(source);
+                collectionView = new PagedCollectionView(source);
             }
             return collectionView;
         }

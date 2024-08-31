@@ -64,39 +64,50 @@
     <Compile Include="Common\TypeHelper.cs" />
     <Compile Include="Controls\Common\ExtensionProperties.cs" />
     <Compile Include="Controls\Common\Extensions.cs" />
-    <Compile Include="Controls\DescriptionViewer.cs" />
-    <Compile Include="Controls\FocusingInvalidControlEventArgs.cs" />
-    <Compile Include="Controls\Label.cs" />
-    <Compile Include="Controls\ValidationHelper.cs" />
-    <Compile Include="Controls\ValidationItemCollection.cs" />
-    <Compile Include="Controls\ValidationMetadata.cs" />
-    <Compile Include="Controls\ValidationSummary.cs" />
-    <Compile Include="Controls\ValidationSummaryFilters.cs" />
-    <Compile Include="Controls\ValidationSummaryItem.cs" />
-    <Compile Include="Controls\ValidationSummaryItemSource.cs" />
-    <Compile Include="Controls\ValidationSummaryItemType.cs" />
-    <Compile Include="Controls\VisualStates.cs" />
-    <Compile Include="Controls\DataField.cs" />
-    <Compile Include="Controls\DataFieldDescriptionViewerPosition.cs" />
-    <Compile Include="Controls\DataFieldLabelPosition.cs" />
-    <Compile Include="Controls\DataFieldMode.cs" />
+    <Compile Include="Controls\DescriptionViewer\DescriptionViewer.cs" />
+    <Compile Include="Controls\DataForm\DataFormEventArgs\FocusingInvalidControlEventArgs.cs" />
+    <Compile Include="Controls\Label\Label.cs" />
+    <Compile Include="Controls\DataForm\ValidationHelper.cs" />
+    <Compile Include="Controls\PagedCollectionView\CollectionViewGroupInternal.cs" />
+    <Compile Include="Controls\PagedCollectionView\CollectionViewGroupRoot.cs" />
+    <Compile Include="Controls\PagedCollectionView\IPageChangingEventArgs.cs" />
+    <Compile Include="Controls\PagedCollectionView\IPagedCollectionView.cs" />
+    <Compile Include="Controls\PagedCollectionView\PagedCollectionView.cs" />
+    <Compile Include="Controls\PagedCollectionView\PagedCollectionViewResources.Designer.cs">
+      <DependentUpon>PagedCollectionViewResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Controls\PagedCollectionView\TypeHelper.cs" />
+    <Compile Include="Controls\ValidationSummary\ValidationItemCollection.cs" />
+    <Compile Include="Controls\Common\ValidationMetadata.cs" />
+    <Compile Include="Controls\ValidationSummary\ValidationSummary.cs" />
+    <Compile Include="Controls\ValidationSummary\Enums\ValidationSummaryFilters.cs" />
+    <Compile Include="Controls\ValidationSummary\ValidationSummaryItem.cs" />
+    <Compile Include="Controls\ValidationSummary\ValidationSummaryItemSource.cs" />
+    <Compile Include="Controls\ValidationSummary\ValidationSummaryItemType.cs" />
+    <Compile Include="Controls\Common\VisualStates.cs" />
+    <Compile Include="Controls\DataField\DataField.cs" />
+    <Compile Include="Controls\DataField\DataFieldEnums\DataFieldDescriptionViewerPosition.cs" />
+    <Compile Include="Controls\DataField\DataFieldEnums\DataFieldLabelPosition.cs" />
+    <Compile Include="Controls\DataField\DataFieldEnums\DataFieldMode.cs" />
     <Compile Include="Automation\DataFormAutomationPeer.cs" />
-    <Compile Include="Controls\DataForm.cs" />
-    <Compile Include="Controls\DataFormBindingInfo.cs" />
-    <Compile Include="Controls\DataFormCommandButtonsVisibilityTypeConverter.cs" />
-    <Compile Include="Controls\DataFormCommandButtonsVisibility.cs" />
-    <Compile Include="Controls\DataFormEditAction.cs" />
-    <Compile Include="Controls\DataFormMode.cs" />
-    <Compile Include="Controls\DataFormAddingNewItemEventArgs.cs" />
-    <Compile Include="Controls\DataFormAutoGeneratingFieldEventArgs.cs" />
-    <Compile Include="Controls\DataFormContentLoadEventArgs.cs" />
-    <Compile Include="Controls\DataFormEditEndedEventArgs.cs" />
-    <Compile Include="Controls\DataFormEditEndingEventArgs.cs" />
-    <Compile Include="Controls\DataFormToStringConverter.cs" />
-    <Compile Include="Controls\DataFormValueConverter.cs" />
-    <Compile Include="Controls\PathOrderPair.cs" />
-    <Compile Include="Controls\ValidationUtil.cs" />
-    <Compile Include="Controls\WeakEventListener.cs" />
+    <Compile Include="Controls\DataForm\DataForm.cs" />
+    <Compile Include="Controls\DataForm\DataFormBindingInfo.cs" />
+    <Compile Include="Controls\DataForm\DataFormCommandButtonsVisibilityTypeConverter.cs" />
+    <Compile Include="Controls\DataForm\DataFormEnums\DataFormCommandButtonsVisibility.cs" />
+    <Compile Include="Controls\DataForm\DataFormEnums\DataFormEditAction.cs" />
+    <Compile Include="Controls\DataForm\DataFormEnums\DataFormMode.cs" />
+    <Compile Include="Controls\DataForm\DataFormEventArgs\DataFormAddingNewItemEventArgs.cs" />
+    <Compile Include="Controls\DataForm\DataFormEventArgs\DataFormAutoGeneratingFieldEventArgs.cs" />
+    <Compile Include="Controls\DataForm\DataFormEventArgs\DataFormContentLoadEventArgs.cs" />
+    <Compile Include="Controls\DataForm\DataFormEventArgs\DataFormEditEndedEventArgs.cs" />
+    <Compile Include="Controls\DataForm\DataFormEventArgs\DataFormEditEndingEventArgs.cs" />
+    <Compile Include="Controls\DataForm\DataFormToStringConverter.cs" />
+    <Compile Include="Controls\DataForm\DataFormValueConverter.cs" />
+    <Compile Include="Controls\DataForm\PathOrderPair.cs" />
+    <Compile Include="Controls\Common\ValidationUtil.cs" />
+    <Compile Include="Controls\DataForm\WeakEventListener.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -112,6 +123,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Common\CommonResources.resx" />
+    <EmbeddedResource Include="Controls\PagedCollectionView\PagedCollectionViewResources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PagedCollectionViewResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>System.ComponentModel</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

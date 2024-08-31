@@ -8,7 +8,8 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:SLToolkit.DataForm.WPF.Controls">
+    xmlns:controls="clr-namespace:SLToolkit.DataForm.WPF.Controls"
+    xmlns:System="clr-namespace:System;assembly=mscorlib">
 
     <!--ValidationSummary-->
     <Style TargetType="controls:ValidationSummary">
@@ -115,7 +116,7 @@
                                 <VisualState x:Name="Empty">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Visibility" Duration="0">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -180,7 +181,11 @@
                                 <VisualState x:Name="Required">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentControl" Storyboard.TargetProperty="FontWeight" Duration="0">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="SemiBold"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <FontWeight>SemiBold</FontWeight>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -439,16 +444,24 @@
 								<VisualState x:Name="Empty">
 									<Storyboard>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="IsHitTestVisible" Duration="0">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="False" />
-										</ObjectAnimationUsingKeyFrames>
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <System:Boolean>false</System:Boolean>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
 										<DoubleAnimation Duration="0" Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Opacity" To="0"/>
 									</Storyboard>
 								</VisualState>
 								<VisualState x:Name="Edit">
 									<Storyboard>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="EditButton" Storyboard.TargetProperty="IsEnabled" Duration="0">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="false" />
-										</ObjectAnimationUsingKeyFrames>
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <System:Boolean>false</System:Boolean>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="CommitButton" Storyboard.TargetProperty="Visibility" Duration="0">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
 										</ObjectAnimationUsingKeyFrames>

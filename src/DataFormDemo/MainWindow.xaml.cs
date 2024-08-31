@@ -15,7 +15,10 @@ namespace DataFormDemo
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Main.DataContext = new TestModel() {Name = "test"};
+            DataContext = new TestModel()
+            {
+                Name = "Name"
+            };
         }
     }
 }

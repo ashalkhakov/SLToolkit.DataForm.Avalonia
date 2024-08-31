@@ -509,12 +509,6 @@ namespace SLToolkit.DataForm.WPF.Controls
         /// </summary>
         private bool _templateApplied;
 
-        /// <summary>
-        /// Holds whether or not lost focus has been fired since
-        /// TextBox validation on text changed began.
-        /// </summary>
-        private IDictionary<TextBox, bool> _lostFocusFired;
-
         #endregion Fields
 
         #region Constructors
@@ -525,7 +519,6 @@ namespace SLToolkit.DataForm.WPF.Controls
         public DataField()
         {
             this.DefaultStyleKey = typeof(DataField);
-            this._lostFocusFired = new Dictionary<TextBox, bool>();
             this.Loaded += new RoutedEventHandler(this.OnDataFieldLoaded);
         }
 
@@ -1461,7 +1454,6 @@ namespace SLToolkit.DataForm.WPF.Controls
             AutomationProperties.SetIsRequiredForForm(this.Content, this.InternalLabel.IsRequired);            
             AutomationProperties.SetHelpText(this.Content, this.DescriptionViewer?.Description ?? string.Empty);
 
-            this._lostFocusFired.Clear();
             this.UpdateBindingsOnElement(this.Content);
         }
 
@@ -1548,34 +1540,6 @@ namespace SLToolkit.DataForm.WPF.Controls
         }
 
         /// <summary>
-        /// Handles the case where a text box has lost focus.
-        /// </summary>
-        /// <param name="sender">The element.</param>
-        /// <param name="e">The event args.</param>
-        private void OnTextBoxLostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            Debug.Assert(this._lostFocusFired.ContainsKey(textBox), "LostFocus should never be handled on a text box without _lostFocusFired getting the text box as a key.");
-            this._lostFocusFired[textBox] = true;
-        }
-
-        /// <summary>
-        /// Handles the case where a text box's text changed.
-        /// </summary>
-        /// <param name="sender">The element.</param>
-        /// <param name="e">The event args.</param>
-        private void OnTextBoxTextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-
-            if (textBox != null && (ValidationUtil.ElementHasErrors(textBox) || !this._lostFocusFired[textBox]))
-            {
-                this._lostFocusFired[textBox] = false;
-                ValidationUtil.UpdateSourceOnElementBindings(textBox);
-            }
-        }
-
-        /// <summary>
         /// Removes the alignment of the grouped description columns.
         /// </summary>
         private void RemoveDescriptionColumnAlignment()
@@ -1630,12 +1594,16 @@ namespace SLToolkit.DataForm.WPF.Controls
             while (dependencyObjectStack.Count > 0)
             {
                 DependencyObject curObject = dependencyObjectStack.Pop();
-                PropertyInfo propertyInfo = curObject.GetType().GetProperty("IsReadOnly");
+                PropertyInfo propertyInfo = null;
 
-                if (propertyInfo != null)
+                if ((curObject as ComboBox) == null)
                 {
-                    propertyInfo.SetValue(curObject, isReadOnly, null);
-                    continue;
+                    propertyInfo = curObject.GetType().GetProperty("IsReadOnly");
+                    if (propertyInfo != null)
+                    {
+                        propertyInfo.SetValue(curObject, isReadOnly, null);
+                        continue;
+                    }
                 }
 
                 propertyInfo = curObject.GetType().GetProperty("IsEnabled");
@@ -1901,31 +1869,6 @@ namespace SLToolkit.DataForm.WPF.Controls
                             }
 
                             element.SetBinding(dependencyProperty, binding);
-
-                            TextBox textBox = element as TextBox;
-
-                            if (textBox != null)
-                            {
-                                if (binding.UpdateSourceTrigger != UpdateSourceTrigger.Explicit)
-                                {
-                                    this._lostFocusFired[textBox] = true;
-
-                                    textBox.LostFocus -= new RoutedEventHandler(this.OnTextBoxLostFocus);
-                                    textBox.LostFocus += new RoutedEventHandler(this.OnTextBoxLostFocus);
-                                    textBox.TextChanged -= new TextChangedEventHandler(this.OnTextBoxTextChanged);
-                                    textBox.TextChanged += new TextChangedEventHandler(this.OnTextBoxTextChanged);
-                                }
-                                else
-                                {
-                                    if (this._lostFocusFired.ContainsKey(textBox))
-                                    {
-                                        this._lostFocusFired.Remove(textBox);
-                                    }
-
-                                    textBox.LostFocus -= new RoutedEventHandler(this.OnTextBoxLostFocus);
-                                    textBox.TextChanged -= new TextChangedEventHandler(this.OnTextBoxTextChanged);
-                                }
-                            }
                         }
                     }
                 }

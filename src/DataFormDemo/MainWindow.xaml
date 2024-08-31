@@ -4,19 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:SLToolkit.DataForm.WPF.Controls;assembly=SLToolkit.DataForm.WPF"
+        xmlns:local="clr-namespace:DataFormDemo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.Resources>
             <ResourceDictionary Source="Styles.xaml"/>
         </Grid.Resources>
-        <StackPanel controls:DataField.IsFieldGroup="True" x:Name="Main">
-            <controls:DataField Label="Name">
-                <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200"/>
-            </controls:DataField>
-            <controls:DataField Label="Address">
-                <TextBox Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
-            </controls:DataField>
-        </StackPanel>
+        <TabControl>
+            <TabItem Header="Validation">
+                <local:ValidationExample/>
+            </TabItem>
+            <TabItem Header="Simple">
+                <local:SimpleDataForm/>
+            </TabItem>
+            <TabItem Header="Fields">
+                <controls:DataForm x:Name="dfTestModel" CurrentItem="{Binding}" AutoGenerateFields="False" Height="400" Width="400">
+                    <controls:DataForm.EditTemplate>
+                        <DataTemplate>
+                            <StackPanel controls:DataField.IsFieldGroup="True">
+                                <controls:DataField Label="Name" Mode="Auto">
+                                    <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200"/>
+                                </controls:DataField>
+                                <controls:DataField Label="Address">
+                                    <TextBox Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200"/>
+                                </controls:DataField>
+                            </StackPanel>
+                        </DataTemplate>
+                    </controls:DataForm.EditTemplate>
+                </controls:DataForm>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
