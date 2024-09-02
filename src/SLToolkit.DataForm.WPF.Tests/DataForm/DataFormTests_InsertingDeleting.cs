@@ -138,6 +138,7 @@ namespace System.Windows.Controls.UnitTests
             });
 
             this.WaitForCurrentItemChange();
+            this.EnqueueDelay(100);
 
             this.EnqueueCallback(() =>
             {

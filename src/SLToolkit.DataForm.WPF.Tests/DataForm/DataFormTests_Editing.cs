@@ -2057,6 +2057,7 @@ namespace System.Windows.Controls.UnitTests
             });
 
             this.WaitForEditEnded();
+            this.EnqueueDelay(100);
 
             this.EnqueueCallback(() =>
             {

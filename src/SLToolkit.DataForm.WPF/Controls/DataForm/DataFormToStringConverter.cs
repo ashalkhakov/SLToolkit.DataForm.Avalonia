@@ -42,7 +42,7 @@ namespace SLToolkit.DataForm.WPF.Controls
         /// <returns>The converted value.</returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value;
+            return Enum.Parse(targetType, (string)value);
         }
     }
 }

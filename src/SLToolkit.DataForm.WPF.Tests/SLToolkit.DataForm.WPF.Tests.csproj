@@ -61,6 +61,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\BoolConverter.cs" />
     <Compile Include="MiniTestHarness\AssemblyInitialize.cs" />
     <Compile Include="Common\DataClassWithEditableAttribute.cs" />
     <Compile Include="Common\DataClassWithMissingDescriptions.cs" />

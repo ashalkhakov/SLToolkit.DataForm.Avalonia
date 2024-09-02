@@ -97,20 +97,20 @@ namespace System.Windows.Controls.UnitTests
                 Assert.IsTrue(bindings[1].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[1].Content, typeof(DatePicker));
 
-                Assert.AreEqual("IntProperty", bindings[2].Path.Path);
-                Assert.IsTrue(bindings[2].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[2].NotifyOnValidationError);
+                Assert.AreEqual("IntProperty", bindings[4].Path.Path);
+                Assert.IsTrue(bindings[4].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[4].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[2].Content, typeof(TextBox));
 
-                Assert.AreEqual("IntPropertyWithoutAutoGenerateField", bindings[3].Path.Path);
-                Assert.IsTrue(bindings[3].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[3].NotifyOnValidationError);
+                Assert.AreEqual("IntPropertyWithoutAutoGenerateField", bindings[5].Path.Path);
+                Assert.IsTrue(bindings[5].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[5].NotifyOnValidationError);
 
                 Assert.IsInstanceOfType(this.DataForm.Fields[3].Content, typeof(TextBox));
 
-                Assert.AreEqual("StringProperty", bindings[4].Path.Path);
-                Assert.IsTrue(bindings[4].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[4].NotifyOnValidationError);
+                Assert.AreEqual("StringProperty", bindings[6].Path.Path);
+                Assert.IsTrue(bindings[6].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[6].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[4].Content, typeof(TextBox));
             });
 
@@ -142,14 +142,14 @@ namespace System.Windows.Controls.UnitTests
                 Assert.IsTrue(bindings[0].ValidatesOnExceptions);
                 Assert.IsTrue(bindings[0].NotifyOnValidationError);
 
-                Assert.AreEqual("IntProperty", bindings[1].Path.Path);
-                Assert.IsTrue(bindings[1].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[1].NotifyOnValidationError);
+                Assert.AreEqual("IntProperty", bindings[3].Path.Path);
+                Assert.IsTrue(bindings[3].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[3].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[1].Content, typeof(ComboBox));
 
-                Assert.AreEqual("StringProperty", bindings[2].Path.Path);
-                Assert.IsTrue(bindings[2].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[2].NotifyOnValidationError);
+                Assert.AreEqual("StringProperty", bindings[6].Path.Path);
+                Assert.IsTrue(bindings[6].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[6].NotifyOnValidationError);
             });
 
             this.EnqueueTestComplete();
@@ -185,28 +185,28 @@ namespace System.Windows.Controls.UnitTests
                 Assert.IsTrue(bindings[1].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[1].Content, typeof(DatePicker));
 
-                Assert.AreEqual("EnumProperty", bindings[2].Path.Path);
-                Assert.IsTrue(bindings[2].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[2].NotifyOnValidationError);
+                Assert.AreEqual("EnumProperty", bindings[4].Path.Path);
+                Assert.IsTrue(bindings[4].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[4].NotifyOnValidationError);
 
                 ComboBox comboBox = this.DataForm.Fields[2].Content as ComboBox;
                 Assert.IsNotNull(comboBox);
                 Assert.AreEqual(1, comboBox.SelectedIndex);
                 Assert.AreEqual("SecondValue", comboBox.SelectedItem);
 
-                Assert.AreEqual("IntProperty", bindings[3].Path.Path);
-                Assert.IsTrue(bindings[3].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[3].NotifyOnValidationError);
+                Assert.AreEqual("IntProperty", bindings[7].Path.Path);
+                Assert.IsTrue(bindings[7].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[7].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[3].Content, typeof(TextBox));
 
-                Assert.AreEqual("IntPropertyWithoutAutoGenerateField", bindings[4].Path.Path);
-                Assert.IsTrue(bindings[4].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[4].NotifyOnValidationError);
+                Assert.AreEqual("IntPropertyWithoutAutoGenerateField", bindings[8].Path.Path);
+                Assert.IsTrue(bindings[8].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[8].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[4].Content, typeof(TextBox));
 
-                Assert.AreEqual("StringProperty", bindings[5].Path.Path);
-                Assert.IsTrue(bindings[5].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[5].NotifyOnValidationError);
+                Assert.AreEqual("StringProperty", bindings[9].Path.Path);
+                Assert.IsTrue(bindings[9].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[9].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[5].Content, typeof(TextBox));
             });
 
@@ -356,20 +356,20 @@ namespace System.Windows.Controls.UnitTests
                 Assert.IsTrue(bindings[1].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[1].Content, typeof(DatePicker));
 
-                Assert.AreEqual("IntProperty", bindings[2].Path.Path);
-                Assert.IsTrue(bindings[2].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[2].NotifyOnValidationError);
-                Assert.IsInstanceOfType(this.DataForm.Fields[2].Content, typeof(TextBox));
+                Assert.AreEqual("IntProperty", bindings[4].Path.Path);
+                Assert.IsTrue(bindings[4].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[4].NotifyOnValidationError);
+                Assert.IsInstanceOfType(this.DataForm.Fields[4].Content, typeof(TextBox));
 
-                Assert.AreEqual("IntPropertyWithoutAutoGenerateField", bindings[3].Path.Path);
-                Assert.IsTrue(bindings[3].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[3].NotifyOnValidationError);
+                Assert.AreEqual("IntPropertyWithoutAutoGenerateField", bindings[5].Path.Path);
+                Assert.IsTrue(bindings[5].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[5].NotifyOnValidationError);
 
                 Assert.IsInstanceOfType(this.DataForm.Fields[3].Content, typeof(TextBox));
 
-                Assert.AreEqual("StringProperty", bindings[4].Path.Path);
-                Assert.IsTrue(bindings[4].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[4].NotifyOnValidationError);
+                Assert.AreEqual("StringProperty", bindings[6].Path.Path);
+                Assert.IsTrue(bindings[6].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[6].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[4].Content, typeof(TextBox));
 
                 this.ExpectContentLoaded();
@@ -393,20 +393,20 @@ namespace System.Windows.Controls.UnitTests
                 Assert.IsTrue(bindings[1].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[1].Content, typeof(DatePicker));
 
-                Assert.AreEqual("IntProperty", bindings[2].Path.Path);
-                Assert.IsTrue(bindings[2].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[2].NotifyOnValidationError);
+                Assert.AreEqual("IntProperty", bindings[4].Path.Path);
+                Assert.IsTrue(bindings[4].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[4].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[2].Content, typeof(TextBox));
 
-                Assert.AreEqual("IntPropertyWithoutAutoGenerateField", bindings[3].Path.Path);
-                Assert.IsTrue(bindings[3].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[3].NotifyOnValidationError);
+                Assert.AreEqual("IntPropertyWithoutAutoGenerateField", bindings[5].Path.Path);
+                Assert.IsTrue(bindings[5].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[5].NotifyOnValidationError);
 
                 Assert.IsInstanceOfType(this.DataForm.Fields[3].Content, typeof(TextBox));
 
-                Assert.AreEqual("StringProperty", bindings[4].Path.Path);
-                Assert.IsTrue(bindings[4].ValidatesOnExceptions);
-                Assert.IsTrue(bindings[4].NotifyOnValidationError);
+                Assert.AreEqual("StringProperty", bindings[6].Path.Path);
+                Assert.IsTrue(bindings[6].ValidatesOnExceptions);
+                Assert.IsTrue(bindings[6].NotifyOnValidationError);
                 Assert.IsInstanceOfType(this.DataForm.Fields[4].Content, typeof(TextBox));
             });
 

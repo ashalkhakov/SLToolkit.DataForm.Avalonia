@@ -3323,15 +3323,11 @@ namespace SLToolkit.DataForm.WPF.Controls
 
                 FieldInfo[] valueFieldInfos = type.GetFields(BindingFlags.Public | BindingFlags.Static);
                 List<string> valueList = new List<string>();
+                var values = Enum.GetValues(type);
 
-                foreach (FieldInfo valueFieldInfo in valueFieldInfos)
+                foreach (var item in values)
                 {
-                    Enum value = valueFieldInfo.GetValue(null) as Enum;
-
-                    if (value != null)
-                    {
-                        valueList.Add(value.ToString());
-                    }
+                    valueList.Add(item.ToString());
                 }
 
                 comboBox.ItemsSource = valueList;

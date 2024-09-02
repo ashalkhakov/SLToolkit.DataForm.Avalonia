@@ -6,6 +6,7 @@
     >
     <UserControl.Resources>
         <local:IntCollection x:Key="intCollection" />
+        <local:BoolConverter x:Key="BoolConverter" />
     </UserControl.Resources>
     
     <Grid x:Name="LayoutRoot" Background="White">
@@ -20,7 +21,7 @@
                             <DatePicker TabIndex="1" SelectedDate="{Binding DateTimeProperty, Mode=TwoWay}" />
                         </datacontrols:DataField>
                         <datacontrols:DataField>
-                            <TextBox Text="{Binding BoolProperty, Mode=TwoWay}" />
+                            <TextBox Text="{Binding BoolProperty, Mode=TwoWay, Converter={StaticResource BoolConverter}}" />
                         </datacontrols:DataField>
                         <datacontrols:DataField Label="Custom label" LabelPosition="Top">
                             <TextBlock Text="Edit template" />

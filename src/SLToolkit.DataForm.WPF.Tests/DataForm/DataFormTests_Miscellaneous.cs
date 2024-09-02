@@ -762,14 +762,13 @@ namespace System.Windows.Controls.UnitTests
         public void EnsureNoMemoryLeaks()
         {
             DataFormApp_NoStrongReference dataFormApp = null;
-            PagedCollectionView pcv = null;
             WeakReference dataFormReference = null;
 
             this.EnqueueCallback(() =>
             {
                 dataFormApp = new DataFormApp_NoStrongReference();
                 dataFormReference = new WeakReference(dataFormApp.LayoutRoot.Children[0]);
-                pcv = new PagedCollectionView(DataClassList.GetDataClassList(3, ListOperations.All));
+                var pcv = new PagedCollectionView(DataClassList.GetDataClassList(3, ListOperations.All));
                 (dataFormReference.Target as DataForm).ItemsSource = pcv;
 
                 dataFormApp.Loaded += new RoutedEventHandler(this.OnDataFormAppLoaded);
@@ -785,6 +784,7 @@ namespace System.Windows.Controls.UnitTests
             });
 
             // 
+            dataFormApp = null;
 
 
             this.EnqueueCallback(() =>
@@ -1376,7 +1376,16 @@ namespace System.Windows.Controls.UnitTests
                 dataFormApp.dataForm.Header = null;
                 Assert.IsNull(headerElement.Content);
 
-                dataFormApp.dataForm.HeaderTemplate = new HeaderTemplate();
+                var templateFactory = new FrameworkElementFactory(typeof(TextBlock));
+                templateFactory.SetValue(TextBlock.TextProperty, "DataForm");
+                
+                var template = new HeaderTemplate()
+                {
+                    VisualTree = templateFactory
+                };
+                template.Seal();
+
+                dataFormApp.dataForm.HeaderTemplate = template;
                 Assert.IsNotNull(headerElement.ContentTemplate);
                 TextBlock textBlock = headerElement.ContentTemplate.LoadContent() as TextBlock;
                 Assert.IsNotNull(textBlock);
