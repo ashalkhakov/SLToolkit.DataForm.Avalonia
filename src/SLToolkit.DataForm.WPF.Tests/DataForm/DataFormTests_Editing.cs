@@ -970,15 +970,23 @@ namespace System.Windows.Controls.UnitTests
         [Description("Ensure that calling begin edit then end edit does not raise an exception.")]
         public void EnsureBeginEditThenEndEditDoesNotRaiseException()
         {
-            DataForm df = new DataForm();
-            df.CurrentItem = new DataClass();
-            df.BeginEdit();
+            DataForm df = null;
+
+            EnqueueCallback(() =>
+            {
+                df = new DataForm();
+                df.CurrentItem = new DataClass();
+                df.BeginEdit();
+            });
 
             bool success = false;
 
             try
             {
-                df.CommitEdit(true /* exitEditingMode */);
+                EnqueueCallback(() =>
+                {
+                    df.CommitEdit(true /* exitEditingMode */);
+                });
                 success = true;
             }
             catch (NullReferenceException)

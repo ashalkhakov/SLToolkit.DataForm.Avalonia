@@ -32,7 +32,6 @@ namespace SLToolkit.DataForm.WPF.Tests
             _uiThread = new Thread(() =>
             {
                 _application = new App();
-                Application.ResourceAssembly = System.Reflection.Assembly.GetExecutingAssembly();
                 _application.InitializeComponent();
                 waitHandle.Set();
                 _application.Run();

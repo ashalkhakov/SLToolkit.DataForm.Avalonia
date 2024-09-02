@@ -1,13 +1,13 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLToolkit.DataForm.WPF", "SLToolkit.DataForm.WPF\SLToolkit.DataForm.WPF.csproj", "{B1F0F8DD-E13C-40B9-8CFC-75439A9BC240}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLToolkit.DataForm.WPF", "SLToolkit.DataForm.WPF\SLToolkit.DataForm.WPF.csproj", "{B1F0F8DD-E13C-40B9-8CFC-75439A9BC240}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFormDemo", "DataFormDemo\DataFormDemo.csproj", "{3887BA93-DF9E-4D42-A2A1-BFF18A9E1AA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataFormDemo", "DataFormDemo\DataFormDemo.csproj", "{3887BA93-DF9E-4D42-A2A1-BFF18A9E1AA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLToolkit.DataForm.WPF.Tests", "SLToolkit.DataForm.WPF.Tests\SLToolkit.DataForm.WPF.Tests.csproj", "{98133438-7794-4B8E-9115-6C2C8FFBD159}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLToolkit.DataForm.WPF.Tests", "SLToolkit.DataForm.WPF.Tests\SLToolkit.DataForm.WPF.Tests.csproj", "{98133438-7794-4B8E-9115-6C2C8FFBD159}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
