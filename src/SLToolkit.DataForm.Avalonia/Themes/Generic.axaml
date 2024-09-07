@@ -1,0 +1,223 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:controls="clr-namespace:SLToolkit.DataForm.WPF.Controls;assembly=SLToolkit.DataForm.Avalonia">
+
+	<!--Label-->
+	<ControlTheme x:Key="{x:Type controls:Label}" TargetType="controls:Label">
+		<Setter Property="IsTabStop" Value="False"/>
+		<Setter Property="HorizontalContentAlignment" Value="Left"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Grid>
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" CornerRadius="2">
+						<ContentControl x:Name="ContentControl" Foreground="{TemplateBinding Foreground}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" FontWeight="{TemplateBinding FontWeight}" Cursor="{TemplateBinding Cursor}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontStretch="{TemplateBinding FontStretch}" VerticalAlignment="{TemplateBinding VerticalAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" IsTabStop="False" />
+					</Border>
+				</Grid>
+			</ControlTemplate>
+		</Setter>
+		<Style Selector="^[IsRequired=True] /template/ ContentControl#ContentControl">
+			<Setter Property="FontWeight" Value="SemiBold"/>
+		</Style>
+		<Style Selector="^ /template/ ContentControl#ContentControl">
+			<Setter Property="Transitions">
+				<Transitions>
+					<BrushTransition Duration="0:0:1.5" Property="Foreground"/>
+				</Transitions>
+			</Setter>
+		</Style>
+		<Style Selector="^^[IsValid=False] /template/ ContentControl#ContentControl">
+			<Setter Property="Foreground" Value="Red"/>
+		</Style>
+	</ControlTheme>
+
+	<!--DescriptionViewer-->
+	<ControlTheme x:Key="{x:Type controls:DescriptionViewer}" TargetType="controls:DescriptionViewer">
+		<Setter Property="IsTabStop" Value="False"/>
+		<Setter Property="GlyphTemplate">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Grid Width="15" Height="15">
+						<Grid x:Name="Icon" Opacity="0.6" Width="13" Height="13" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<Grid.Styles>
+								<Style Selector="Grid#Icon">
+									<Setter Property="Opacity" Value="0.6"/>
+								</Style>
+								<Style Selector="Grid#Icon:pointerover">
+									<Setter Property="Opacity" Value="1"/>
+								</Style>
+							</Grid.Styles>
+							<Ellipse>
+								<Ellipse.Stroke>
+									<LinearGradientBrush EndPoint="0.298,0.3" StartPoint="0.505,0.65">
+										<GradientStop Color="#FF485E6F"/>
+										<GradientStop Color="#4C485E6F" Offset="1"/>
+									</LinearGradientBrush>
+								</Ellipse.Stroke>
+								<Ellipse.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FFCED4D9" Offset="1"/>
+										<GradientStop Color="#FFFDFDFD" Offset="0"/>
+									</LinearGradientBrush>
+								</Ellipse.Fill>
+							</Ellipse>
+							<StackPanel Width="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+								<Path Height="9" HorizontalAlignment="Center" Margin="0,0,0,1" VerticalAlignment="Top" Width="3" Data="M0.5,0.60000002 C0.5,0.54477155 0.54477155,0.5 0.60000002,0.5 L2.4000001,0.5 C2.4552286,0.5 2.5,0.54477155 2.5,0.60000002 L2.5,1.6215254 C2.5,1.6767539 2.4552286,1.7215254 2.4000001,1.7215254 L0.60000002,1.7215254 C0.54477155,1.7215254 0.5,1.6767539 0.5,1.6215254 z M0.50000548,3.3151906 C0.50000548,3.2599623 0.54477704,3.2151906 0.60000551,3.2151906 L2.4000056,3.2151906 C2.4552341,3.2151906 2.5000055,3.2599623 2.5000055,3.3151906 L2.5000055,8.4000092 C2.5000055,8.4552374 2.4552341,8.5000095 2.4000056,8.5000095 L0.60000551,8.5000095 C0.54477704,8.5000095 0.50000548,8.4552374 0.50000548,8.4000092 z" Stretch="Fill" Stroke="#00000000">
+									<Path.Fill>
+										<LinearGradientBrush EndPoint="0.39,0.297" StartPoint="0.413,0.653">
+											<GradientStop Color="#FF485E6F"/>
+											<GradientStop Color="#4C485E6F" Offset="0.781"/>
+											<GradientStop Color="#FF485E6F" Offset="0.982"/>
+										</LinearGradientBrush>
+									</Path.Fill>
+								</Path>
+							</StackPanel>
+						</Grid>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<StackPanel Orientation="Horizontal">
+					<Border Background="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+						<Button x:Name="DescriptionContent" IsTabStop="False" Template="{TemplateBinding GlyphTemplate}" Background="#00000000" BorderBrush="#FFFFFFFF" BorderThickness="1" Padding="1"  HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}"
+								ToolTip.Placement="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+							<ToolTip.Tip>
+								<TextBlock IsHitTestVisible="True"
+										   MaxWidth="250"
+										   Margin="5,-3,5,0"
+										   Text="{TemplateBinding Description}" TextWrapping="Wrap"/>
+							</ToolTip.Tip>
+						</Button>
+					</Border>
+				</StackPanel>
+			</ControlTemplate>
+		</Setter>
+
+		<Style Selector="^ /template/ Button#DescriptionContent.HasDescription">
+			<Setter Property="IsVisible" Value="True"/>
+		</Style>
+		<Style Selector="^ /template/ Button#DescriptionContent.NoDescription">
+			<Setter Property="IsVisible" Value="False"/>
+		</Style>
+	</ControlTheme>
+
+	<!--DataField-->
+	<ControlTheme x:Key="{x:Type controls:DataField}" TargetType="controls:DataField">
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="Margin" Value="3" />
+		<Setter Property="MinHeight" Value="24" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:DataField">
+					<ContentControl x:Name="ContentControl" Foreground="{TemplateBinding Foreground}" IsTabStop="False" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</ControlTheme>
+
+	<!--ValidationSummary-->
+	<ControlTheme x:Key="{x:Type controls:ValidationSummary}" TargetType="controls:ValidationSummary">
+		<Setter Property="IsTabStop" Value="False"/>
+		<Setter Property="Background" Value="#FFEFEFEA"/>
+		<Setter Property="BorderBrush" Value="#FFCECEC7"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="Padding" Value="0"/>
+		<Setter Property="HeaderTemplate">
+			<Setter.Value>
+				<DataTemplate>
+					<Border Background="#FFDC020D" CornerRadius="2" x:Name="Header" Margin="-1,-1,-1,0">
+						<StackPanel Margin="6,2,6,4" Orientation="Horizontal" VerticalAlignment="Top">
+							<Grid Height="13" Width="13">
+								<Ellipse Margin="0" RenderTransformOrigin="0.5,0.5" >
+									<Ellipse.Stroke>
+										<LinearGradientBrush StartPoint="0.505,0.65" EndPoint="0.5,0.058">
+											<GradientStop Color="#FFCA000C" Offset="0"/>
+											<GradientStop Color="#FFFF9298" Offset="0.991"/>
+										</LinearGradientBrush>
+									</Ellipse.Stroke>
+									<Ellipse.Fill>
+										<LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+											<GradientStop Color="#FFFFFFFF" Offset="0"/>
+											<GradientStop Color="#FFFDC8C8" Offset="1"/>
+										</LinearGradientBrush>
+									</Ellipse.Fill>
+								</Ellipse>
+								<Path Fill="#DDD43940" Data="M5.5,2.5 L7.5,2.5 L7.5,8 L5.5,8 M5.5,9.5 L7.5,9.5 L7.5,10.5 L5.5,10.5"/>
+							</Grid>
+							<TextBlock Padding="4,1,0,0" Text="{Binding}" Foreground="#FFFFFFFF" FontWeight="Bold"/>
+						</StackPanel>
+					</Border>
+				</DataTemplate>
+			</Setter.Value>
+		</Setter>
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:ValidationSummary">
+					<Grid x:Name="ValidationSummary">
+						<Border x:Name="Content" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="0,0,2,2">
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="*"/>
+								</Grid.RowDefinitions>
+								<ListBox x:Name="SummaryListBox" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Theme="{TemplateBinding SummaryListBoxStyle}" Padding="{TemplateBinding Padding}" Foreground="{TemplateBinding Foreground}">
+									<ListBox.Styles>
+										<Style Selector="ListBoxItem">
+											<Setter Property="Template">
+												<Setter.Value>
+													<ControlTemplate TargetType="ListBoxItem">
+														<Grid Background="{TemplateBinding Background}">
+															<Grid.Styles>
+																<Style Selector="Rectangle#FillColor:selected">
+																	<Setter Property="Opacity" Value=".35"/>
+																</Style>
+																<Style Selector="ContentPresenter#ContentPresenter:disabled">
+																	<Setter Property="Opacity" Value=".55" />
+																</Style>
+																<Style Selector="Rectangle#FillColor2:selected">
+																	<Setter Property="Opacity" Value=".75"/>
+																</Style>
+																<Style Selector="Rectangle#FocusVisualElement:focus">
+																	<Setter Property="IsVisible" Value="True"/>
+																</Style>
+															</Grid.Styles>
+															<Rectangle x:Name="FillColor" Opacity="0" Fill="#59F7D8DB" IsHitTestVisible="False" RadiusX="1" RadiusY="1"/>
+															<Rectangle x:Name="FillColor2" Opacity="0" Fill="#FFF7D8DB" IsHitTestVisible="False" RadiusX="1" RadiusY="1"/>
+															<ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" HorizontalAlignment="Left" Margin="{TemplateBinding Padding}"/>
+															<Rectangle x:Name="FocusVisualElement" Stroke="#FFF7D8DB" StrokeThickness="1" IsVisible="False" RadiusX="1" RadiusY="1" />
+														</Grid>
+													</ControlTemplate>
+												</Setter.Value>
+											</Setter>
+										</Style>
+									</ListBox.Styles>
+									<ListBox.ItemTemplate>
+										<DataTemplate>
+											<StackPanel Orientation="Horizontal">
+												<TextBlock Text="{Binding MessageHeader}" FontWeight="Bold" Margin="4,0,0,0"/>
+												<TextBlock Text="{Binding Message}" Margin="4,0,0,0"/>
+											</StackPanel>
+										</DataTemplate>
+									</ListBox.ItemTemplate>
+								</ListBox>
+								<Border x:Name="DisabledVisual" IsVisible="False" Background="#80FFFFFF" Grid.RowSpan="2" IsHitTestVisible="True"/>
+								<ContentControl x:Name="HeaderContentControl" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" IsTabStop="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"/>
+							</Grid>
+						</Border>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+
+		<Style Selector="^[IsEnabled=False] /template/ Border#DisabledVisual">
+			<Setter Property="IsVisible" Value="True"/>
+		</Style>
+		<Style Selector="^[HasDisplayedErrors=False] /template/ Border#Content">
+			<Setter Property="IsVisible" Value="False"/>
+		</Style>
+	</ControlTheme>
+
+</ResourceDictionary>

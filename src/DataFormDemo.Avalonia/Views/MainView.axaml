@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:DataFormDemo.Avalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DataFormDemo.Avalonia.Views.MainView"
+             x:DataType="vm:MainViewModel"
+			 xmlns:controls="clr-namespace:SLToolkit.DataForm.WPF.Controls;assembly=SLToolkit.DataForm.Avalonia">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+	<StackPanel>
+		<TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+		<!--
+		<controls:Label DataContext="{Binding}" PropertyPath="Greeting" Target="{Binding #box}"/>
+		<controls:DescriptionViewer DataContext="{Binding}" PropertyPath="Greeting" Target="{Binding #box}">
+
+		</controls:DescriptionViewer>
+
+		<TextBox x:Name="box" Text="{Binding Greeting}" />
+		-->
+		<StackPanel controls:DataField.IsFieldGroup="True">
+			<controls:DataField DataContext="{Binding}" PropertyPath="Greeting" Mode="Auto">
+				<TextBox x:Name="tbox" Text="{Binding Greeting, Mode=TwoWay}" Width="200"/>
+			</controls:DataField>
+			<controls:ValidationSummary Target="{Binding #tbox}">
+				
+			</controls:ValidationSummary>
+		</StackPanel>
+
+		<Button>Click me</Button>
+	</StackPanel>
+</UserControl>
